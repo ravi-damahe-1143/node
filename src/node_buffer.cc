@@ -356,7 +356,6 @@ MaybeLocal<Object> New(Environment* env, size_t length) {
   Isolate* isolate(env->isolate());
   EscapableHandleScope scope(isolate);
 
-  // V8 currently only allows a maximum Typed Array index of max Smi.
   if (length > kMaxLength) {
     isolate->ThrowException(ERR_BUFFER_TOO_LARGE(isolate));
     return Local<Object>();
@@ -399,7 +398,6 @@ MaybeLocal<Object> Copy(Environment* env, const char* data, size_t length) {
   Isolate* isolate(env->isolate());
   EscapableHandleScope scope(isolate);
 
-  // V8 currently only allows a maximum Typed Array index of max Smi.
   if (length > kMaxLength) {
     isolate->ThrowException(ERR_BUFFER_TOO_LARGE(isolate));
     return Local<Object>();
@@ -495,7 +493,6 @@ MaybeLocal<Object> New(Environment* env,
                        size_t length) {
   if (length > 0) {
     CHECK_NOT_NULL(data);
-    // V8 currently only allows a maximum Typed Array index of max Smi.
     if (length > kMaxLength) {
       Isolate* isolate(env->isolate());
       isolate->ThrowException(ERR_BUFFER_TOO_LARGE(isolate));
